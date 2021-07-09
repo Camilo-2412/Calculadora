@@ -3,6 +3,7 @@
     height: 50px;
     font-size: 2rem!important;
     text-align: center;
+    place-items: center;
   }
 
   .pantalla {
