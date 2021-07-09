@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    
     <title>Calculadora</title>
   </head>
   <body>
@@ -19,41 +20,41 @@
       <div class="calculadora card">
         <h1 align="center" style="background-color: #252525; color: white;"> Calculadora </h1>
         
-        <input type="text" class="pantalla" value="" disabled />
+        <div id="pantalla" class="pantalla" ></div>
 
         <div class="calculator-keys">
-          <button type="button" id ="btn7" value="7" class="button btn btn-light">7</button>
-          <button type="button" id ="btn8" value="8" class="button btn btn-light">8</button>
-          <button type="button" id ="btn9" value="9" class="button btn btn-light">9</button>
+          <button  id ="btn7" value="7" class="button btn btn-light">7</button>
+          <button  id ="btn8" value="8" class="button btn btn-light">8</button>
+          <button  id ="btn9" value="9" class="button btn btn-light">9</button>
 
-          <button type="button" id ="btnMas" class="button btn btn-dark active" value="+">+</button>
+          <button  id ="btnMas" class="button btn btn-dark active" value="+">+</button>
 
-          <button type="button" id ="btn4" value="4" class="button btn btn-light">4</button>
-          <button type="button" id ="btn5" value="5" class="button btn btn-light">5</button>
-          <button type="button" id ="btn6" value="6" class="button btn btn-light">6</button>
+          <button  id ="btn4" value="4" class="button btn btn-light">4</button>
+          <button  id ="btn5" value="5" class="button btn btn-light">5</button>
+          <button  id ="btn6" value="6" class="button btn btn-light">6</button>
 
-          <button type="button" id ="btnMenos" class="button btn btn-dark active" value="-">-</button>
+          <button  id ="btnMenos" class="button btn btn-dark active" value="-">-</button>
 
-          <button type="button" id ="btn1" value="1" class="button btn btn-light">1</button>
-          <button type="button" id ="btn2" value="2" class="button btn btn-light">2</button>
-          <button type="button" id ="btn3" value="3" class="button btn btn-light">3</button>
+          <button  id ="btn1" value="1" class="button btn btn-light">1</button>
+          <button  id ="btn2" value="2" class="button btn btn-light">2</button>
+          <button  id ="btn3" value="3" class="button btn btn-light">3</button>
 
-          <button type="button" id ="btnMul" class="button btn btn-dark active" value="*">
+          <button  id ="btnMul" class="button btn btn-dark active" value="*">
             &times;
           </button>
 
           <button
-            type="button"
-            class="button btn btn-secondary"
-            value="."
-            id ="btnDecimal"
+            
+            class="button btn btn-success"
+            value="C"
+            id ="btnC"
           >
-            .
+            C
           </button>
 
-          <button type="button" id ="btn0" value="0" class="button btn btn-light">0</button>
+          <button  id ="btn0" value="0" class="button btn btn-light">0</button>
 
-          <button type="button" id ="btnIgual"class="button btn btn-danger" value="equal">=</button>
+          <button  id ="btnIgual"class="button btn btn-danger" value="equal">=</button>
 
           <button type="button" id ="btnDividr" class="button btn btn-dark active" value="/">
             &divide;
@@ -62,6 +63,6 @@
       </div>
     </div>
 
-
+    <script src="logica.js"> </script>
   </body>
 </html>
