@@ -12,7 +12,7 @@ let btn8 = document.getElementById("btn8");
 let btn9 = document.getElementById("btn9");
 let btn0 = document.getElementById("btn0");
 
-let btnMas = document.getElementById("bntMas");
+let btnMas = document.getElementById("btnMas");
 let btmMenos = document.getElementById("btnMenos");
 let btnMul = document.getElementById("btnMul");
 let btnDivir = document.getElementById("btnDividir");
@@ -20,8 +20,92 @@ let btnDivir = document.getElementById("btnDividir");
 let btnC = document.getElementById("btnC");
 let btnIgual= document.getElementById("btnIgual");
 
+let primerNumero = 0;
+let segundoNumero = 0;
+let operacion = "";
+
 
 //Funciones
+const mas = () =>{
+    if(pantalla.innerHTML===""){
+        console.log(operacion);
+    }else{
+        if (operacion==="") {
+            primerNumero=pantalla.innerHTML;
+            pantalla.innerHTML="";
+            operacion = "+";
+        }
+    }
+}  
+const menos = () =>{
+    if(pantalla.innerHTML===""){
+        console.log(operacion);
+    }else{
+        if (operacion==="") {
+            primerNumero=pantalla.innerHTML;
+            pantalla.innerHTML="";
+            operacion = "-";
+        }
+    }
+}
+
+const mul = () =>{
+    if(pantalla.innerHTML===""){
+        console.log(operacion);
+    }else{
+        if (operacion==="") {
+            primerNumero=pantalla.innerHTML;
+            pantalla.innerHTML="";
+            operacion = "*";
+        }
+    }
+}
+
+const dividir = () =>{
+    if(pantalla.innerHTML===""){
+        console.log(operacion);
+    }else{
+        if (operacion==="") {
+            primerNumero=pantalla.innerHTML;
+            pantalla.innerHTML="";
+            operacion = "/";
+            console.log(operacion);
+        }
+    }
+}
+
+const operar = () =>{
+    if (pantalla.innerHTML==="") {
+        
+    } else {
+        segundoNumero=pantalla.innerHTML;    
+        if(operacion==="+"){
+            let resultado = 0;
+            resultado = parseFloat(primerNumero) + parseFloat(segundoNumero);
+            pantalla.innerHTML = resultado;
+        }    
+        if(operacion==="-"){
+            let resultado = 0;
+            resultado = parseFloat(primerNumero) - parseFloat(segundoNumero);
+            pantalla.innerHTML = resultado;
+        }  
+        if(operacion==="*"){
+            let resultado = 0;
+            resultado = parseFloat(primerNumero) * parseFloat(segundoNumero);
+            pantalla.innerHTML = resultado;
+        }  
+
+        if(operacion==="/"){
+            let resultado = 0;
+            resultado = parseFloat(primerNumero) / parseFloat(segundoNumero);
+            pantalla.innerHTML = resultado;
+        }  
+    }
+
+    operacion = ""
+    primerNumero = parseFloat(pantalla.innerHTML)
+}
+
 const fnbtn1 = () =>{
     pantalla.innerHTML += 1;
 }
@@ -116,4 +200,24 @@ btn0.onclick= function(){
 
 btnC.onclick=function(){
     fnbtnc();
+};
+
+btnMas.onclick=function(){
+    mas();
+};
+
+btnMenos.onclick=function(){
+    menos();
+};
+
+btnMul.onclick=function(){
+    mul();
+};
+
+btnDivir.onclick=function(){
+    dividir();
+};
+
+btnIgual.onclick=function(){
+    operar();
 };
