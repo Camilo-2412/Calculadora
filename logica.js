@@ -1,5 +1,6 @@
 //variables
 let pantalla = document.getElementById("pantalla");
+let tablero = document.getElementById("tablero");
 
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
@@ -17,207 +18,331 @@ let btmMenos = document.getElementById("btnMenos");
 let btnMul = document.getElementById("btnMul");
 let btnDivir = document.getElementById("btnDividir");
 
+let btnPotencia = document.getElementById("btnPotencia");
+let btnPotenciaN = document.getElementById("btnPotenciaN");
+let btnRaiz = document.getElementById("btnRaiz")
+
 let btnC = document.getElementById("btnC");
-let btnIgual= document.getElementById("btnIgual");
+let btnIgual = document.getElementById("btnIgual");
+let btnDecimal = document.getElementById("btnDecimal");
 
 let primerNumero = 0;
 let segundoNumero = 0;
 let operacion = "";
-
+let historial = 0;
 
 //Funciones
-const mas = () =>{
-    if(pantalla.innerHTML===""){
-        console.log(operacion);
-    }else{
-        if (operacion==="") {
-            primerNumero=pantalla.innerHTML;
-            pantalla.innerHTML="";
-            operacion = "+";
-        }
+const mas = () => {
+  if (pantalla.innerHTML === "") {
+    console.log(operacion);
+    tablero.innerHTML = "";
+  } else {
+    if (operacion === "") {
+      if (historial === 1) {
+        tablero.innerHTML = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        tablero.innerHTML += "+";
+        operacion = "+";
+      } else {
+        primerNumero = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        tablero.innerHTML += "+";
+        operacion = "+";
+      }
     }
-}  
-const menos = () =>{
-    if(pantalla.innerHTML===""){
-        console.log(operacion);
-    }else{
-        if (operacion==="") {
-            primerNumero=pantalla.innerHTML;
-            pantalla.innerHTML="";
-            operacion = "-";
-        }
-    }
-}
+  }
+};
 
-const mul = () =>{
-    if(pantalla.innerHTML===""){
-        console.log(operacion);
-    }else{
-        if (operacion==="") {
-            primerNumero=pantalla.innerHTML;
-            pantalla.innerHTML="";
-            operacion = "*";
-        }
+const menos = () => {
+  if (pantalla.innerHTML === "") {
+    console.log(operacion);
+  } else {
+    if (operacion === "") {
+      if (historial === 1) {
+        tablero.innerHTML = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        tablero.innerHTML += "-";
+        operacion = "-";
+      } else {
+        primerNumero = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        tablero.innerHTML += "-";
+        operacion = "-";
+      }
     }
-}
+  }
+};
 
-const dividir = () =>{
-    if(pantalla.innerHTML===""){
-        console.log(operacion);
-    }else{
-        if (operacion==="") {
-            primerNumero=pantalla.innerHTML;
-            pantalla.innerHTML="";
-            operacion = "/";
-            console.log(operacion);
-        }
+const mul = () => {
+  if (pantalla.innerHTML === "") {
+    console.log(operacion);
+  } else {
+    if (operacion === "") {
+      if (historial === 1) {
+        tablero.innerHTML = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        tablero.innerHTML += "x";
+        operacion = "*";
+      } else {
+        primerNumero = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        tablero.innerHTML += "x";
+        operacion = "*";
+      }
     }
-}
+  }
+};
 
-const operar = () =>{
-    if (pantalla.innerHTML==="") {
-        
+const dividir = () => {
+  if (pantalla.innerHTML === "") {
+    console.log(operacion);
+  } else {
+    if (operacion === "") {
+      if (historial === 1) {
+        tablero.innerHTML = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        operacion = "/";
+        tablero.innerHTML += "÷";
+      } else {
+        primerNumero = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        operacion = "/";
+        tablero.innerHTML += "÷";
+      }
+    }
+  }
+};
+
+const potenciaN = () => {
+  if (pantalla.innerHTML === "") {
+    console.log(operacion);
+  } else {
+    if (operacion === "") {
+      if (historial === 1) {
+        tablero.innerHTML = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        operacion = "n";
+        tablero.innerHTML += "^";
+      } else {
+        primerNumero = pantalla.innerHTML;
+        pantalla.innerHTML = "";
+        operacion = "n";
+        tablero.innerHTML += "^";
+      }
+    }
+  }
+};
+
+const potencia = () => {
+  if (pantalla.innerHTML === "") {
+  } else {
+    let resultado = 0;
+    if (historial === 1) {
+      tablero.innerHTML = pantalla.innerHTML;
+      primerNumero = pantalla.innerHTML;
+      console.log(primerNumero);
+      resultado = Math.pow(parseFloat(primerNumero), 2);
+      tablero.innerHTML += "²";
+      pantalla.innerHTML = resultado;
     } else {
-        segundoNumero=pantalla.innerHTML;    
-        if(operacion==="+"){
-            let resultado = 0;
-            resultado = parseFloat(primerNumero) + parseFloat(segundoNumero);
-            pantalla.innerHTML = resultado;
-        }    
-        if(operacion==="-"){
-            let resultado = 0;
-            resultado = parseFloat(primerNumero) - parseFloat(segundoNumero);
-            pantalla.innerHTML = resultado;
-        }  
-        if(operacion==="*"){
-            let resultado = 0;
-            resultado = parseFloat(primerNumero) * parseFloat(segundoNumero);
-            pantalla.innerHTML = resultado;
-        }  
+      primerNumero = pantalla.innerHTML;
+      console.log(primerNumero);
+      resultado = Math.pow(parseFloat(primerNumero), 2);
+      tablero.innerHTML += "²";
+      pantalla.innerHTML = resultado;
+    }
+  }
 
-        if(operacion==="/"){
-            let resultado = 0;
-            resultado = parseFloat(primerNumero) / parseFloat(segundoNumero);
-            pantalla.innerHTML = resultado;
-        }  
+  primerNumero = pantalla.innerHTML;
+};
+
+const operar = () => {
+  if (pantalla.innerHTML === "") {
+  } else {
+    segundoNumero = pantalla.innerHTML;
+    if (operacion === "+") {
+      let resultado = 0;
+      resultado = parseFloat(primerNumero) + parseFloat(segundoNumero);
+      pantalla.innerHTML = resultado;
+    }
+    if (operacion === "-") {
+      let resultado = 0;
+      resultado = parseFloat(primerNumero) - parseFloat(segundoNumero);
+      pantalla.innerHTML = resultado;
+    }
+    if (operacion === "*") {
+      let resultado = 0;
+      resultado = parseFloat(primerNumero) * parseFloat(segundoNumero);
+      pantalla.innerHTML = resultado;
     }
 
-    operacion = ""
-    primerNumero = parseFloat(pantalla.innerHTML)
-}
+    if (operacion === "/") {
+      let resultado = 0;
+      resultado = parseFloat(primerNumero) / parseFloat(segundoNumero);
+      pantalla.innerHTML = resultado;
+    }
 
-const fnbtn1 = () =>{
-    pantalla.innerHTML += 1;
-}
+    if (operacion === "n") {
+      let resultado = 0;
+      resultado = Math.pow(parseFloat(primerNumero), parseFloat(segundoNumero));
+      pantalla.innerHTML = resultado;
+    }
+    historial = 1;
+    tablero.innerHTML += "=";
+    operacion = "";
+    primerNumero = parseFloat(pantalla.innerHTML);
+  }
+};
 
-const fnbtn2 = () =>{
-    pantalla.innerHTML += 2;
-}
-
-const fnbtn3 = () =>{
-    pantalla.innerHTML += 3;
-}
-
-const fnbtn4 = () =>{
-    pantalla.innerHTML += 4;
-}
-
-const fnbtn5 = () =>{
-    pantalla.innerHTML += 5;
-}
-
-const fnbtn6 = () =>{
-    pantalla.innerHTML += 6;
-}
-
-const fnbtn7 = () =>{
-    pantalla.innerHTML += 7;
-}
-
-const fnbtn8 = () =>{
-    pantalla.innerHTML += 8;
-}
-
-const fnbtn9 = () =>{
-    pantalla.innerHTML += 9;
-}
-
-const fnbtn0 = () =>{
-    if (pantalla.innerHTML==="") {
-            
-    } else {
-        pantalla.innerHTML += 0;
+const fnbtnDecimal = () => {
+    if(pantalla.innerHTML===""){
+        pantalla.innerHTML += "0.";
+        tablero.innerHTML += "0.";
+    }else{
+        pantalla.innerHTML += ".";
+        tablero.innerHTML += ".";
     }
     
-}
+  };
+
+const fnbtn1 = () => {
+  pantalla.innerHTML += 1;
+  tablero.innerHTML += 1;
+};
+
+const fnbtn2 = () => {
+  pantalla.innerHTML += 2;
+  tablero.innerHTML += 2;
+};
+
+const fnbtn3 = () => {
+  pantalla.innerHTML += 3;
+  tablero.innerHTML += 3;
+};
+
+const fnbtn4 = () => {
+  pantalla.innerHTML += 4;
+  tablero.innerHTML += 4;
+};
+
+const fnbtn5 = () => {
+  pantalla.innerHTML += 5;
+  tablero.innerHTML += 5;
+};
+
+const fnbtn6 = () => {
+  pantalla.innerHTML += 6;
+  tablero.innerHTML += 6;
+};
+
+const fnbtn7 = () => {
+  pantalla.innerHTML += 7;
+  tablero.innerHTML += 7;
+};
+
+const fnbtn8 = () => {
+  pantalla.innerHTML += 8;
+  tablero.innerHTML += 8;
+};
+
+const fnbtn9 = () => {
+  pantalla.innerHTML += 9;
+  tablero.innerHTML += 9;
+};
+
+const fnbtn0 = () => {
+  if (pantalla.innerHTML === "") {
+    if (tablero.innerHTML === "") {
+    } else {
+      pantalla.innerHTML += 0;
+      tablero.innerHTML += 0;
+    }
+  } else {
+    pantalla.innerHTML += 0;
+    tablero.innerHTML += 0;
+  }
+};
 
 const fnbtnc = () => {
-    pantalla.innerHTML = ""
-
-}
+  pantalla.innerHTML = "";
+  tablero.innerHTML = "";
+  hisorail = 0;
+};
 
 //Eventos
-btn1.onclick= function(){
-    fnbtn1();
+btnDecimal.onclick = function () {
+    fnbtnDecimal();
 };
 
-btn2.onclick= function(){
-    fnbtn2();
+btn1.onclick = function () {
+  fnbtn1();
 };
 
-btn3.onclick= function(){
-    fnbtn3();
+btn2.onclick = function () {
+  fnbtn2();
 };
 
-btn4.onclick= function(){
-    fnbtn4();
+btn3.onclick = function () {
+  fnbtn3();
 };
 
-
-btn5.onclick= function(){
-    fnbtn5();
+btn4.onclick = function () {
+  fnbtn4();
 };
 
-btn6.onclick= function(){
-    fnbtn6();
+btn5.onclick = function () {
+  fnbtn5();
 };
 
-btn7.onclick= function(){
-    fnbtn7();
+btn6.onclick = function () {
+  fnbtn6();
 };
 
-btn8.onclick= function(){
-    fnbtn8();
+btn7.onclick = function () {
+  fnbtn7();
 };
 
-btn9.onclick= function(){
-    fnbtn9();
+btn8.onclick = function () {
+  fnbtn8();
 };
 
-btn0.onclick= function(){
-    fnbtn0();
+btn9.onclick = function () {
+  fnbtn9();
 };
 
-btnC.onclick=function(){
-    fnbtnc();
+btn0.onclick = function () {
+  fnbtn0();
 };
 
-btnMas.onclick=function(){
-    mas();
+btnC.onclick = function () {
+  fnbtnc();
 };
 
-btnMenos.onclick=function(){
-    menos();
+btnMas.onclick = function () {
+  mas();
 };
 
-btnMul.onclick=function(){
-    mul();
+btnMenos.onclick = function () {
+  menos();
 };
 
-btnDivir.onclick=function(){
-    dividir();
+btnMul.onclick = function () {
+  mul();
 };
 
-btnIgual.onclick=function(){
-    operar();
+btnDivir.onclick = function () {
+  dividir();
+};
+
+btnIgual.onclick = function () {
+  operar();
+};
+
+btnPotencia.onclick = function () {
+  potencia();
+  historial=1;
+};
+
+btnPotenciaN.onclick = function () {
+  potenciaN();
 };
